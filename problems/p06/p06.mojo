@@ -21,12 +21,12 @@ def add_10_blocks(
     size: Int,
 ):
     var i = block_dim.x * block_idx.x + thread_idx.x
+    if i < size:
+        output[i] = a[i] + 10
     # FILL ME IN (roughly 2 lines)
 
 
 # ANCHOR_END: add_10_blocks
-
-
 def main() raises:
     with DeviceContext() as ctx:
         var out = ctx.enqueue_create_buffer[dtype](SIZE)
